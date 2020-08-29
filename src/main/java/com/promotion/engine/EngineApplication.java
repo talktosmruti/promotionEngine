@@ -5,11 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.promotion.engine.model.Cart;
 import com.promotion.engine.model.Item;
+import com.promotion.engine.svc.CartCheckOutSvc;
 import com.promotion.engine.svc.ComboItemFixedPricePromotionSvc;
 import com.promotion.engine.svc.IPromotionSvc;
 import com.promotion.engine.svc.NquantityFixedPricePromotionSvc;
 import com.promotion.engine.svc.PromotionBuilder;
-import com.promotion.engine.util.CartCheckOutSvc;
 
 @SpringBootApplication
 public class EngineApplication {

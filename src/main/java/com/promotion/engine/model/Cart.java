@@ -9,9 +9,13 @@ import com.promotion.engine.svc.IPromotionSvc;
 
 public class Cart {
 
+	/*Map having item Id vs Item*/
 	private Map<String, Item> items = new ConcurrentHashMap<>();
 
+	/*Total payable Amount for the shopping*/
 	private double cartTotalAfterPromotions;
+	
+	/*This list can be used to hold the all the promotions applied on the cart. This has not been implemented now.*/
 	private List<IPromotionSvc> appliedPromos = new ArrayList<IPromotionSvc>();
 
 	public final Map<String, Item> getItems() {

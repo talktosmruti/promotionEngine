@@ -3,6 +3,12 @@ package com.promotion.engine.svc;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Modified builder pattern is used to build all available promotions 
+ * for the application.
+ * @author smruti
+ *
+ */
 public class PromotionBuilder {
 
 	private List<IPromotionSvc> availablePromotions;
@@ -10,7 +16,9 @@ public class PromotionBuilder {
 
 	public PromotionBuilder(Builder builder) {
 		this.availablePromotions = builder.getPromos();
-		/*Apart from the promotions which are added by admin, this default svc is required for price calculation*/
+		/*Apart from the promotions which are added by admin, 
+		 * this default svc is required for price calculation.
+		 * This will calculate the flat prices for items which are not eligible for promotions.*/
 		this.availablePromotions.add(defaultNoPromotionSvc);
 	}
 

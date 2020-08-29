@@ -2,9 +2,13 @@ package com.promotion.engine.model;
 
 public class Item {
 
+	/*SKUID of item*/
 	private String id;
+	/*Is any promotions applied on this item. this is to take care of mutually exclusive promotion restrictions.*/
 	private boolean isPromotionApplied;
+	/*Quantities bought*/
 	private int quantity;
+	/*Each unit price*/
 	private double unitPrice;
 
 	public Item(String item, int quantity, double unitPrice) {

@@ -1,4 +1,4 @@
-package com.promotion.engine.util;
+package com.promotion.engine.svc;
 
 import java.util.List;
 
@@ -14,8 +14,10 @@ public class CartCheckOutSvc {
 	/*To keep a control on number of promotions that can be applied*/
 	private int maxAllowedPromos;
 
+	/*Takes promotion builder which can contain different type of promotion*/
 	public CartCheckOutSvc(PromotionBuilder builder, int maxAllowedPromos) {
 		this.builder = builder;
+		/*Max possible promos is either configured limit or total promos available.*/
 		this.maxAllowedPromos = Math.min(maxAllowedPromos, builder.getPromos().size());
 	}
 
@@ -31,9 +33,13 @@ public class CartCheckOutSvc {
 		return this.builder.getPromos();
 	}
 
-	public Cart checkout(Cart cart) {
+	/*
+	 * Updates the cart with total price.
+	 */
+	public void checkout(Cart cart) {
 		int promotiosAppliedCnt = 0;
 		if (promotiosAppliedCnt <= maxAllowedPromos) {
+			/*Each promos will be applied on order of their priority*/
 			for (IPromotionSvc eachPromo : getAvailablePromos()) {
 				eachPromo.applyPromotion(cart);
 				promotiosAppliedCnt ++;
@@ -41,7 +47,6 @@ public class CartCheckOutSvc {
 		}
 		System.out.println("Total Price : "+cart.getCartTotalAfterPromotions());
 		System.out.println("-------------------------------");
-		return cart;
 	}
 
 }

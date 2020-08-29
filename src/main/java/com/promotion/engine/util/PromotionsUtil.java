@@ -9,7 +9,9 @@ import com.promotion.engine.svc.IPromotionSvc;
 public class PromotionsUtil {
 
 	/*
-	 * Sort promotions as per priority.
+	 * Sort promotions as per priority. 
+	 * This is required in case same item is eligible for multiple promotions , t
+	 * hen a promotion of higher priority will be applied.
 	 */
 	public static List<IPromotionSvc> sort(List<IPromotionSvc> availablePromotions) {
 		return availablePromotions
