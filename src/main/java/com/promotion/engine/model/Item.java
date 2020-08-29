@@ -41,4 +41,12 @@ public class Item {
 	public void removeQuantityForWhichPromotionApplied(int quantityEligibleForPrommotion) {
 		this.quantity -= quantityEligibleForPrommotion;
 	}
+
+	@Override
+	public String toString() {
+		return "Item [id=" + id + ", isPromotionApplied=" + isPromotionApplied + ", quantity=" + quantity
+				+ ", unitPrice=" + unitPrice + "]";
+	}
+	
+	
 }

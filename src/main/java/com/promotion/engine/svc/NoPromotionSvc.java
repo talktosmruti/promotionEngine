@@ -9,8 +9,7 @@ import com.promotion.engine.model.Item;
  */
 public class NoPromotionSvc implements IPromotionSvc {
 
-	private final static int PRIORITY = 3;
-
+	private final static int PRIORITY = 2;
 
 	@Override
 	public void applyPromotion(Cart cart) {
@@ -18,10 +17,11 @@ public class NoPromotionSvc implements IPromotionSvc {
 			Item item = cart.getItems().get(id);
 			double totalPriceForCurrentItem = 0;
 			totalPriceForCurrentItem += item.getQuantity() * item.getUnitPrice();
-			cart.setCartTotalAfterPromotions(totalPriceForCurrentItem);
+			cart.incrementCartPrice(totalPriceForCurrentItem);
 			item.removeQuantityForWhichPromotionApplied(item.getQuantity());
 			updateItemAfterPromotion(cart, item);
 			cart.addItemsToCart(item);
+			System.out.println("Item " + id + " price added for no promotion : " + totalPriceForCurrentItem);
 		}
 
 	}

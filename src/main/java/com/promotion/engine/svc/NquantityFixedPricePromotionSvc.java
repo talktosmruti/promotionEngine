@@ -26,6 +26,7 @@ public class NquantityFixedPricePromotionSvc implements IPromotionSvc {
 	public void applyPromotion(Cart cart) {
 		for (String id : cart.getItems().keySet()) {
 			Item item = cart.getItems().get(id);
+			
 			double totalPriceForCurrentItem = 0;
 			if (!item.isPromotionApplied()) {
 				/*If promotion is not applied on this item , 
@@ -36,12 +37,12 @@ public class NquantityFixedPricePromotionSvc implements IPromotionSvc {
 					
 					int promotionLotQuanity = item.getQuantity() / itemToFixPrice.get(id).getMinQuantity();
 					totalPriceForCurrentItem += promotionLotQuanity * itemToFixPrice.get(id).getDiscountedPrice();
-					cart.setCartTotalAfterPromotions(totalPriceForCurrentItem);
-					item.removeQuantityForWhichPromotionApplied(promotionLotQuanity);
+					cart.incrementCartPrice(totalPriceForCurrentItem);
+					item.removeQuantityForWhichPromotionApplied(promotionLotQuanity * itemToFixPrice.get(id).getMinQuantity());
 					updateItemAfterPromotion(cart, item);
-					cart.addItemsToCart(item);
 				}
 			}
+			System.out.println("Promo-1 applied on item "+item.getId()+" with price " + totalPriceForCurrentItem);
 		}
 
 	}

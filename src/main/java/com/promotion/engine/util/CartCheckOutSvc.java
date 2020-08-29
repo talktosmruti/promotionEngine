@@ -8,7 +8,10 @@ import com.promotion.engine.svc.PromotionBuilder;
 
 public class CartCheckOutSvc {
 
+	/*All the required promotions can be added to this builder.*/
 	private PromotionBuilder builder;
+	
+	/*To keep a control on number of promotions that can be applied*/
 	private int maxAllowedPromos;
 
 	public CartCheckOutSvc(PromotionBuilder builder, int maxAllowedPromos) {
@@ -37,6 +40,7 @@ public class CartCheckOutSvc {
 			}
 		}
 		System.out.println("Total Price : "+cart.getCartTotalAfterPromotions());
+		System.out.println("-------------------------------");
 		return cart;
 	}
 
